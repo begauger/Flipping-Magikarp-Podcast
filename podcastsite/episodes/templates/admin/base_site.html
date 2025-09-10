@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+  <a href="http://localhost:5173/">Flipping Magikarp Podcast</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+<div id="user-tools">
+  <a href="http://localhost:5173/" target="_blank">View site</a>
+</div>
+{% endblock %}

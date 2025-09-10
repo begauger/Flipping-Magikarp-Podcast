@@ -39,9 +39,7 @@ export default function App() {
         background: "linear-gradient(to bottom, #bae6fd 0%, #2563eb 100%)",
       }}
     >
-      <div className="sticky top-0 z-50">
-        <Navbar user={user} onLogin={() => setShowLogin(true)} onHome={goHome} />
-      </div>
+      <Navbar user={user} onLogin={() => setShowLogin(true)} onHome={goHome} />
 
       {showLogin ? (
         <>
