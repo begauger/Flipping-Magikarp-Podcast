@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
+      className="min-h-screen flex flex-col overflow-x-hidden"
       style={{
         background: "linear-gradient(to bottom, #bae6fd 0%, #2563eb 100%)",
       }}
