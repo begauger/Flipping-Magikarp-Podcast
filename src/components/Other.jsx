@@ -3,13 +3,22 @@ import { useState } from "react";
 export default function Other({ episodes }) {
   const [hovered, setHovered] = useState(null);
 
+  if (!episodes || episodes.length === 0) {
+    return (
+      <section className="w-full flex flex-col items-center my-10">
+        <h2 className="text-3xl font-fishing text-orange-600 mb-8 text-center">Other Episodes</h2>
+        <div className="text-orange-700 font-semibold">No other episodes available.</div>
+      </section>
+    );
+  }
+
   return (
     <section className="w-full flex flex-col items-center my-10">
       <h2 className="text-3xl font-fishing text-orange-600 mb-8 text-center">Other Episodes</h2>
       <div className="flex flex-wrap justify-center gap-10 w-full">
         {episodes.map((ep, idx) => (
           <div
-            key={idx}
+            key={ep.id || idx}
             className={`
               transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] cursor-pointer
               flex flex-col items-center justify-center
@@ -32,12 +41,9 @@ export default function Other({ episodes }) {
                 <h3 className="text-2xl font-bold text-orange-800 mb-1 text-center">{ep.title}</h3>
                 <p className="text-orange-900 text-sm mb-2 text-center">{ep.description}</p>
                 <span className="text-xs text-orange-400 mb-2">{ep.date}</span>
-                <a
-                  href={ep.url}
-                  className="bg-orange-500 text-white font-bold px-4 py-2 rounded-full shadow hover:bg-orange-600 transition"
-                >
-                  Listen
-                </a>
+                {ep.audio && (
+                  <audio controls src={ep.audio} className="w-full mt-2" />
+                )}
               </>
             ) : (
               <span className="text-orange-700 font-bold text-lg text-center px-2 truncate w-full">
