@@ -28,6 +28,10 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  function goToAdmin() {
+    window.open("http://127.0.0.1:8000/admin/", "_blank");
+  }
+
   return (
     <div
       className="min-h-screen flex flex-col overflow-x-hidden"
@@ -59,9 +63,9 @@ export default function App() {
           >
             <About />
             <div className="ml-40">
-            <NewEpisode episode={episodes[0] || { title: "", description: "", date: "", audio: "" }} />
-          </div>   
-           </section>
+              <NewEpisode episode={episodes[0] || { title: "", description: "", date: "", audio: "" }} />
+            </div>
+          </section>
 
           <FishDivider />
 
@@ -76,6 +80,19 @@ export default function App() {
           <section id="contact">
             <Contact />
           </section>
+
+          {/* Superuser/admin shortcut */}
+          {user && (
+            <div className="fixed bottom-8 right-8 z-50">
+              <button
+                onClick={goToAdmin}
+                className="bg-yellow-400 text-blue-900 font-bold px-6 py-3 rounded-full shadow-lg hover:bg-yellow-300 transition text-lg"
+              >
+                {user.name}
+              </button>
+              <span className="block text-xs text-blue-900 mt-1 text-center">Go to Admin</span>
+            </div>
+          )}
 
           <footer className="w-full py-8 bg-blue-950/80 text-center rounded-t-2xl">
             <p className="font-fishing text-lg text-blue-100/60 mb-2">
