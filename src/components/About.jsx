@@ -26,12 +26,13 @@ export default function About() {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="flex flex-col items-start mb-6 md:mb-0 ml-0 md:-ml-80">
-      <h2 className="text-lg font-fishing text-blue-700 mb-4 ml-2 select-none">
+    <div className="flex flex-col items-start mb-6 md:mb-0 ml-0 md:-ml-80 w-full">
+      {/* Center the heading on mobile */}
+      <h2 className="text-lg font-fishing text-blue-700 mb-4 ml-2 select-none text-center w-full md:text-left md:w-auto">
         Click to Learn More!
       </h2>
       <div
-        className="flex-1 flex flex-col justify-center items-center cursor-pointer"
+        className="flex-1 flex flex-col justify-center items-center cursor-pointer w-full"
         onClick={() => setFlipped((f) => !f)}
         tabIndex={0}
         aria-label="Flip About Card"
@@ -60,7 +61,9 @@ export default function About() {
           </div>
           {/* Back: About Info */}
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 rounded-xl shadow-lg p-8 rotate-y-180 backface-hidden overflow-auto">
-            <h2 className="text-2xl font-fishing text-blue-800 mb-2">About</h2>
+            <h2 className="text-2xl font-fishing text-blue-800 mb-2 text-center w-full">
+              About
+            </h2>
             <p className="text-blue-900 text-center text-base leading-relaxed">
               Welcome to <span className="font-bold text-yellow-400">Flipping Magikarp</span>!<br /><br />
               Dive into the world of fishing, fun, and Magikarp with our monthly podcast.<br /><br />
@@ -69,7 +72,8 @@ export default function About() {
             </p>
           </div>
         </div>
-        <span className="mt-2 text-blue-300 text-xs text-center select-none">
+        {/* Center the flip hint on mobile */}
+        <span className="mt-2 text-blue-300 text-xs text-center block w-full select-none">
           {flipped ? "Click to see the logo" : ""}
         </span>
       </div>
